@@ -1,3 +1,75 @@
+# Remove Karma and Jasmine
+
+```
+npm remove @types/jasmine jasmine-core karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter
+```
+# Replace the test script:
+
+```
+"test": "jest",
+"test:watch": "jest --watch",
+"test:coverage": "jest --coverage",
+```
+
+# Install Jest
+
+```
+npm install --save-dev @types/jest jest-preset-angular
+```
+
+# jest.config.js
+
+```
+module.exports = {
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/src/setup.jest.ts'],
+};
+```
+
+# tsconfig.spec.json
+
+```
+types ["jest", node]
+"files": [
+    "src/setup.jest.ts"
+  ],
+```
+
+# setup.jest.ts
+
+```
+import 'jest-preset-angular/setup-jest';
+```
+
+# the sum function
+
+```
+sum(a: number, b: number) {
+    return a + b;
+}
+```
+
+# app.component.spec.ts
+
+```
+describe('AppComponent', () => {
+  let fixture: AppComponent;
+  beforeEach(() => {
+    fixture = new AppComponent();
+  });
+  it('add two numbers', () => {
+    expect(fixture.sum(1,4)).toBe(5);
+  });
+});
+```
+
+# Run the test
+
+```
+npm run test
+```
+
+
 # Soca10
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
