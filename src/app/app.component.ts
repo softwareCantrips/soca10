@@ -11,4 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'soca10';
+  sum(a: number, b: number) {
+    return a + b;
+  }
 }
